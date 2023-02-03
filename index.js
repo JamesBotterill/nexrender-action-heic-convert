@@ -13,7 +13,7 @@ module.exports = (job, settings, action, type) => {
             const imageFile = job.assets[index].src
             const filepath = uri2path(imageFile)
             const fileExt = path.extname(filepath)
-            const dir = path.dirname(filepath)
+            const dir = options.dir || path.dirname(filepath)
 
             if(fileExt === '.heic'){
                 convertFile(filepath, dir)

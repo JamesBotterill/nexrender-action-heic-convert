@@ -7,6 +7,7 @@ A predownload action that checks if the file being submitted is a hiec image for
     "predownload": [
       {
         "module": "nexrender-action-hiec-convert",
+        "dir": "/some/output/location" //optional if you're using file:// 
         "layers": [
           "image_1"
         ]
