@@ -1,6 +1,7 @@
 const fs = require('fs');
 const convert = require('heic-convert');
 const uri2path = require('file-uri-to-path')
+const path = require('path');
 
 module.exports = (job, settings, options, type) => {
     //console.log('hello from my module: ' + action.module);
@@ -10,9 +11,7 @@ module.exports = (job, settings, options, type) => {
 
             const index = job.assets.findIndex(x => x.layerName == asset);
             const imageFile = job.assets[index].src
-            console.log(imageFile)
             const filepath = uri2path(imageFile)
-            console.log(filepath)
             const fileExt = path.extname(filepath)
             const dir = options.dir || path.dirname(filepath)
             const filename = path.basename(filepath, fileExt)
