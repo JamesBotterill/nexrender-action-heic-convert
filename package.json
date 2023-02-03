@@ -1,5 +1,5 @@
 {
-  "name": "nexrender-action-hiec-convert",
+  "name": "nexrender-action-heic-convert",
   "version": "1.0.0",
   "description": "a prerender file converter to turn heic images to png files",
   "main": "index.js",
