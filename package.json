@@ -1,0 +1,22 @@
+{
+  "name": "nexrender-action-hiec-convert",
+  "version": "1.0.0",
+  "description": "a prerender file converter to turn heic images to png files",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JamesBotterill/nexrender-action-hiec-convert.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JamesBotterill/nexrender-action-hiec-convert/issues"
+  },
+  "homepage": "https://github.com/JamesBotterill/nexrender-action-hiec-convert#readme",
+  "dependencies": {
+    "heic-convert": "^1.2.4"
+  }
+}
