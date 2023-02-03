@@ -1,4 +1,3 @@
-const { promisify } = require('util');
 const fs = require('fs');
 const convert = require('heic-convert');
 const uri2path = require('file-uri-to-path')
@@ -20,23 +19,19 @@ module.exports = (job, settings, options, type) => {
             const newFile = dir + filename + '.png' 
 
             if(fileExt === '.HEIC'|| '.heic'){
-                async ()=>{
-                    await convertFile(filepath, filename, fileExt,  dir)
-                    job.assets[index].src = newFile
-                    settings.logger.log(`changed ${job.assets[index].layerName} value to ${newFile}`)};
-                }
+                    async (file, name, ext ,outputDir) => {
+                        const inputBuffer = await fs.readFile(file, ext);
+                        const outputBuffer = await convert({
+                          buffer: inputBuffer, // the HEIC file buffer
+                          format: 'PNG'        // output format
+                        });
+                      
+                        await fs.writeFile(outputDir + name + '.png', outputBuffer);
+                        job.assets[index].src = newFile
+                        settings.logger.log(`changed ${job.assets[index].layerName} value to ${newFile}`)
+                    };
+            };
         })
         resolve()
     })
-    
 };
-
-const convertFile  = async (file, name, ext ,outputDir) => {
-    const inputBuffer = await promisify(fs.readFile)(file, ext);
-    const outputBuffer = await convert({
-      buffer: inputBuffer, // the HEIC file buffer
-      format: 'PNG'        // output format
-    });
-  
-    await promisify(fs.writeFile)(outputDir + name + '.png', outputBuffer);
-  };
